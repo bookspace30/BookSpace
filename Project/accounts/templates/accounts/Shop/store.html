@@ -1,0 +1,42 @@
+{% extends 'accounts/Shop/main.html' %} {% load static %} {% block content %}
+
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form method="get" class="form-inline2 justify-content-center">
+                {{myFilter.form}}
+                <button class="btn btn-info" type="submit">Search</button>
+            </form>
+            <!--<form action="" method="get" class="form-inline2 justify-content-center">
+					{{myfilter.form}}
+
+					<button class="btn btn-primary" type="submit">
+					Search</button>
+				</form>-->
+        </div>
+    </div>
+
+</div>
+<hr>
+<div class="row">
+    {% for product in products %}
+    <div class="col-lg-3">
+        <img class="thumbnail" src="{{product.imageURL}}">
+        <div class="box-element product">
+            <h5><strong><center><a href={% url 'productdetail' product.id %} style="color:black;text-decoration:none;">{{product.name}}</a></center></strong></h5>
+            <hr>
+
+            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+
+            <!--<a class="btn btn-outline-success" href="#">View</a>-->
+            <h5 style="display: inline-block; float: right;"><del>₹{{product.price}}</del> <strong>₹0.00</strong></h5>
+
+        </div>
+        <hr>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+{% endblock content %}

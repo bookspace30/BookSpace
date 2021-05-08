@@ -1,0 +1,61 @@
+{% extends 'accounts/login2/base.html' %} {% block content %}
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        border-radius: 5%;
+    }
+
+</style>
+<div class="container">
+    <div class="p-4 m-4">
+        <div class="col-lg-4 mt-4 border mb-4 mx-auto rounded pt-4" style="background-color:white;">
+            <div class="text-center col"><img
+                    alt="" class="" src="https://ps.w.org/login-customizer/assets/icon-256x256.png?rev=2455454"
+                    style="height: 150px;">
+                <!-- <hr>-->
+                <div class="display-8">Login</div>
+                <hr>
+            </div>
+            <h3 class="alert alert-light border mt-4 mb-4 rounded" hidden>Login Here</h3>
+            <form method="POST"> {% csrf_token %} {% if error%}
+
+                <div class="alert alert-danger" role="alert"> {{error}}
+
+                </div>
+                {% endif %}
+
+                <!-- email -->
+                <div class="form-group"><label for="">Username</label><input class=" form-control-sm form-control" id="Username" name="username"
+                                                                             placeholder="Username"
+                                                                             required
+                                                                             type="text"></div>
+                <!-- password -->
+                <div class="form-group"><label for="">Password</label><input class="form-control form-control-sm" id="password"
+                                                                             name="password"
+                                                                             placeholder="Password"
+                                                                             type="password"></div>
+                <hr>
+                <div class="form-group">
+                    <input class="btn btn-sm btn-info col-lg-4" type="submit" value="Login">
+                    <a class="btn btn-sm btn-warning col-lg-4 float-right" class="ml-2" href="{% url 'signup' %}">SignUp</a>
+                </div>
+                
+                {{form.errors}} 
+                
+                {% for message in messages %}
+                    <p id="messages"> {{message}}</p>
+                {% endfor %}
+
+                <div>
+                    <center><a href="{% url 'reset_password' %}" style="text-decoration:none;">Forgot Password?</a>
+                    </center>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

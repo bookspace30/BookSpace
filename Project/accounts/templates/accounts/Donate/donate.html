@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Donate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "icon" href = "{% static '/images/logo5.png' %}" type = "image/png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/Donate/dashb.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/Donate/navb.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/Donate/dashb2.css' %}">
+    <meta name="viewport" content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/AboutUs/navb.css' %}">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background-image: url("https://i.pinimg.com/originals/67/18/22/671822c2f63dd5f65d8fd15c9710420b.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+        .hello-msg {
+            font-size: 18px;
+            color: #fff;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topnav" id="myTopnav">
+
+        <div style="float: left;">
+            <a href="/home/"><img width='220' height='31' src={% static '/images/logo3.png' %}></a> 
+        </div>
+
+        <a href="{% url 'store' %}"><i class="fa fa-fw fa-shopping-bag"></i> Shop</a>
+        <a class="active"><i class="fa fa-fw fa-gift"></i> Donate</a>
+        <a href="{% url 'halloffame' %}"><i class="fa fa-fw fa-user"></i> Hall Of Fame</a>
+        <a href="{% url 'aboutus' %}"><i class="fa fa-fw fa-info"></i> About</a>
+
+
+        <div class="login-container">
+            {% if request.user.is_active %}
+            <a href="{% url 'accountdetails' %}">Hello, {{request.user.customer}}</a> 
+            <a class="hello-msg" href="{% url 'logout' %}">Logout</a> {% else %}
+            <a href="{% url 'accountdetails' %}">Hello, {{request.user}}</a> 
+            <a class="hello-msg" href="{% url 'login' %}">Login</a> {% endif %}
+
+        </div>
+
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+
+    </div>
+
+    <div class="content">
+        <div class="container">
+
+            <form class="" method="post">
+                    {% csrf_token %}
+                <h1>
+                    <center>DONATION FORM</center>
+                </h1>
+                <div class="input-container">
+                    <i class="fa fa-user icon"></i>
+                    <input class="input-field" type="text" placeholder="First Name" name="fstnm" required>
+                    <input class="input-field" type="text" placeholder="Last Name" name="lsnm" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa fa-envelope icon"></i>
+                    <input class="input-field" type="text" placeholder="Email" name="email" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa fa-phone icon"></i>
+                    <input class="input-field" type="text" placeholder="Phone Number" pattern="[0-9]+" name="phone" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa fa-book icon"></i>
+                    <input class="input-field" type="number" min="1" placeholder="Quantity Of Books" name="books" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa fa-home icon"></i>
+                    <input class="input-field" type="Name" placeholder="Door No" name="doorno" required>
+                </div>
+                <div class="input-container">
+                    <i class="fa fa-map-pin icon"></i>
+                    <input class="input-field" type="Name" placeholder="Landmark" name="landmark" required>
+                </div>
+                <div class="input-container">
+                    <i class="fa fa-home icon"></i>
+                    <input class="input-field" type="Address" placeholder="City/Town" name="city" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa fa-home icon"></i>
+                    <input class="input-field" type="Address" placeholder="State" name="state" required>
+                    
+                </div>
+                <div class="input-container">
+                    <i class="fa fa-home icon"></i>
+                    <input class="input-field" type="PinCode" placeholder="Pin Code" name="pincode" required>
+                </div>
+
+                <button type="submit" class="btn">Submit</button>
+            </form>
+
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            alert("You have donated books, Thank You! ");
+        }
+    </script>
+</body>
+
+</html>

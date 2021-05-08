@@ -1,0 +1,16 @@
+* {box-sizing: border-box;}
+
+.container1 {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20%;
+  width: 350px;
+  height: 350px;
+}
