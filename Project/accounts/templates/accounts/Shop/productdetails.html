@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+    <head>
+        <title>{{product.name}}</title>
+        <link rel = "icon" href = "{% static '/images/logo5.png' %}" type = "image/png">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/Shop/style.css' %}">
+        
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/Shop/main.css' %}">
+        <link href="{% static '/css/AccountDetails/navb.css' %}" rel="stylesheet" type="text/css">
+ 
+
+
+        <style>
+            
+            .hello-msg12 {
+                font-size: 18px;
+                color: #fff;
+                margin-right: 15px;
+            }
+
+            .form-inline2{display:-ms-flexbox;display:flex;-ms-flex-flow:row wrap;flex-flow:row wrap;-ms-flex-align:center;align-items:center}.form-inline2 .form-check{width:100%}@media (min-width:576px){.form-inline2 label{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;margin-bottom:0}.form-inline2 .form-group{display:-ms-flexbox;display:flex;-ms-flex:0 0 auto;flex:0 0 auto;-ms-flex-flow:row wrap;flex-flow:row wrap;-ms-flex-align:center;align-items:center;margin-bottom:0}.form-inline2 .form-control{display:inline-block;width:auto;vertical-align:middle}.form-inline2 .form-control-plaintext{display:inline-block}.form-inline2 .custom-select,.form-inline2 .input-group{width:auto}.form-inline2 .form-check{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:auto;padding-left:0}.form-inline2 .form-check-input{position:relative;-ms-flex-negative:0;flex-shrink:0;margin-top:0;margin-right:.25rem;margin-left:0}.form-inline2 .custom-control{-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}.form-inline2 .custom-control-label{margin-bottom:0}}
+        </style>
+
+        <script type="text/javascript">
+            var user = '{{request.user}}'
+
+            function getToken(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            var csrftoken = getToken('csrftoken')
+
+            function getCookie(name) {
+                // Split cookie string and get all individual name=value pairs in an array
+                var cookieArr = document.cookie.split(";");
+
+                // Loop through the array elements
+                for(var i = 0; i < cookieArr.length; i++) {
+                    var cookiePair = cookieArr[i].split("=");
+
+                    /* Removing whitespace at the beginning of the cookie name
+                    and compare it with the given string */
+                    if(name == cookiePair[0].trim()) {
+                        // Decode the cookie value and return
+                        return decodeURIComponent(cookiePair[1]);
+                    }
+                }
+
+                // Return null if not found
+                return null;
+            }
+            var cart = JSON.parse(getCookie('cart'))
+
+            if (cart == undefined){
+                cart = {}
+                console.log('Cart Created!', cart)
+                document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+            }
+            console.log('Cart:', cart)
+        
+        </script>
+
+    </head>
+
+    <body>
+
+        <div class="topnav" id="myTopnav">
+
+            <div style="float: left;">
+                <a href="/home/"><img width='220' height='31' src={% static '/images/logo3.png' %}></a> 
+            </div>
+
+            <a class="active"><i class="fa fa-fw fa-shopping-bag"></i> Shop</a>
+            <a href="{% url 'donate' %}"><i class="fa fa-fw fa-gift"></i> Donate</a>
+            <a href="{% url 'halloffame' %}"><i class=" fa fa-fw fa-user "></i> Hall Of Fame</a>
+            <a href="{% url 'aboutus' %}"><i class="fa fa-fw fa-info "></i> About</a>
+
+
+            <div class="login-container">
+
+                {% if request.user.is_active %}
+                <a href="{% url 'accountdetails' %}">Hello, {{request.user.customer}}</a> 
+                <a class="hello-msg12" href="{% url 'logout' %}">Logout</a> {% else %}
+                <a href="{% url 'accountdetails' %}">Hello, {{request.user}}</a> 
+                <a class="hello-msg12" href="{% url 'login' %}">Login</a> {% endif %}
+
+                <div class="form-inline2 my-2 my-lg-0">
+
+                    <a class="hello-msg" href="{% url 'cart' %}">
+                        <img id="cart-icon" src="{% static 'images/Shop/cart.png' %}">
+                    </a>
+                    <p class="hello-msg" id="cart-total">{{cartItems}}</p>
+
+                </div>
+            </div>
+
+
+
+            <a class="icon " href="javascript:void(0); " onclick="myFunction() ">
+                <i class="fa fa-bars "></i>
+            </a>
+
+        </div>
+
+
+        <div class="container">
+            <h3>Product: {{product.name}}</h3><hr>
+            <a class="btn btn-outline-dark" href="{% url 'store' %}">&#x2190; Back To Shopping</a>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{product.image.url}}" alt="" class="img-fluid">
+                </div>
+				
+                <div class="col-md-8">
+                    <!--<h4>{{product.name}} (Viewed {{product.view_count}} times)</h4>-->
+                    <h1><strong>{{product.name}}</strong></h1>
+
+                    <h5><b>Price:</b> <strike>₹{{product.price}}</strike> ₹0.00</h5>
+				    
+                    <hr>
+                    <h5><b>Author:</b> {{product.author}}</h5>
+                    <h5><b>ISBN:</b> {{product.isbn}}</h5>
+                    <h5><b>Book Condition:</b> {{product.condition}}</h5>
+                    <hr>
+                    
+                    <h5><b>Cash On Delivery</b></h5>
+                    <h5><b>7 Day Replacement</b></h5>
+
+                    {% if product.product_count %}
+                    <p style="color: green; ">In Stock</p>
+                    {% else %}
+                    <p style="color: red; ">Out Of Stock</p>
+                    {% endif %}
+                    <button data-product="{{product.id}}" data-action="add" class="btn btn-warning add-btn update-cart">Add to Cart</button>  
+                          
+					<a style="margin:5px;" class="btn btn-info" href="{% url 'buynow' product.id %}">Buy Now</a>
+
+
+                    <hr>
+                    <h3><b>Description</b></h3>
+                    <p>{{product.description}}</p>
+                </div>
+            </div>
+
+        </div>
+    
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <script type="text/javascript" src="{% static 'js/Shop/cart.js' %}"></script>
+    </body>
+</html>

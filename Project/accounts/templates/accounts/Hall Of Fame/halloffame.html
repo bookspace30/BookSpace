@@ -1,0 +1,303 @@
+<!DOCTYPE>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>HallOfFame</title>
+    <link rel = "icon" href = "{% static '/images/logo5.png' %}" type = "image/png">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script src="{% static '/js/Hall Of Fame/aboutus.js' %}"></script>
+
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet"/>
+
+    <link href="{% static '/css/Hall Of Fame/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/css/Hall Of Fame/image.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{% static '/css/Hall Of Fame/navb.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/css/Hall Of Fame/aboutus.css' %}" rel="stylesheet" type="text/css">
+
+
+    <style>
+        .hello-msg {
+            font-size: 18px;
+            color: #fff;
+            margin-right: 15px;
+        }
+
+    </style>
+</head>
+
+<body style="background-color:powderblue;">
+
+<div class="topnav" id="myTopnav">
+
+    <div style="float: left;">
+        <a href="/home/"><img width='220' height='31' src={% static '/images/logo3.png' %}></a> 
+    </div>
+
+    <a href="{% url 'store' %}"><i class="fa fa-fw fa-shopping-bag"></i> Shop</a>
+    <a href="{% url 'donate' %}"><i class="fa fa-fw fa-gift"></i> Donate</a>
+    <a class="active"><i class=" fa fa-fw fa-user "></i> Hall Of Fame</a>
+    <a href="{% url 'aboutus' %}"><i class="fa fa-fw fa-info "></i> About</a>
+
+
+    <div class="login-container ">
+        {% if request.user.is_active %}
+        <a href="{% url 'accountdetails' %}">Hello, {{request.user.customer}}</a> 
+        <a class="hello-msg" href="{% url 'logout' %}">Logout</a> {% else %}
+        <a href="{% url 'accountdetails' %}">Hello, {{request.user}}</a> 
+        <a class="hello-msg" href="{% url 'login' %}">Login</a> {% endif %}
+    </div>
+
+    <a class="icon " href="javascript:void(0); " onclick="myFunction() ">
+        <i class="fa fa-bars "></i>
+    </a>
+
+</div>
+
+
+<h1>
+    <center>Hall Of Fame</center>
+</h1>
+<h1>
+    <center>Hall Of Fame</center>
+</h1>
+
+<div class="grid-container ">
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/harish.png' %} ">
+            <div>Harish Mullagura</div>
+            <div>Books Donated: 130</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/rakesh.png' %} ">
+            <div>Ganeshula Rakesh</div>
+            <div>Books Donated: 97</div>
+        </div>
+    </div>
+
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/img2.png' %} ">
+            <div>Jayanth Sri Ram</div>
+            <div>Books Donated: 95</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/neeraj.png' %} ">
+            <div>Neeraj Dusa</div>
+            <div>Books Donated: 70</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/anirudh.png' %} ">
+            <div>Anirudh Jakotia</div>
+            <div>Books Donated: 65</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/harish.png' %} ">
+            <div>Subash</div>
+            <div>Books Donated: 64</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/avatar.png' %} ">
+            <div>Hari</div>
+            <div>Books Donated: 63</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/img1.png' %} ">
+            <div>Ravi</div>
+            <div>Books Donated: 62</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/img3.png' %} ">
+            <div>Bhargav</div>
+            <div>Books Donated: 60</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/img4.png' %} ">
+            <div>Ravi</div>
+            <div>Books Donated: 56</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/img5.png' %} ">
+            <div>Rahul</div>
+            <div>Books Donated: 53</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/avatar.png' %} ">
+            <div>Charan</div>
+            <div>Books Donated: 52</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/img7.png' %} ">
+            <div>Vikranth</div>
+            <div>Books Donated: 50</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/img8.png' %} ">
+            <div>Vamsi</div>
+            <div>Books Donated: 45</div>
+        </div>
+    </div>
+    <div class="grid-item ">
+        <div class="container1 ">
+            <img alt="Avatar " class="image " src="{% static '/images/Hall Of Fame/img1.png' %} ">
+            <div>Girish Sir</div>
+            <div>Books Donated: 40</div>
+        </div>
+    </div>
+</div>
+
+
+<!--footer-->
+<div class="container-fluid bg-dark text-white">
+    <div class="container">
+        <div class="row ">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 footer pt-5">
+                <p style="font-size:20px;text-transform: uppercase;font-weight: 800;" data-aos="slide-right">Book Space
+                </p>
+                <p data-aos="slide-right">
+                    <a href="{% url 'store' %}" style="color: white;"><i></i> Shop</a>
+                    <br>
+                    <a href="{% url 'donate' %}" style=" color: white; "><i></i>Donate</a>
+                    <br>
+                    <a href="{% url 'halloffame' %}" style="color: white; "><i></i>Hall Of Fame</a>
+                    <br>
+                    <a href="{% url 'aboutus' %}" style="color: white; "><i></i>About Us</a>
+                    <br>
+                    <a href="{% url 'contactus' %}" style="color: white;"><i></i> Contact Us</a>
+                    <br>
+
+                </p>
+            </div>
+            <div class="col-xl-3 pt-5 hide-girl ">
+                <p style="font-size:20px;text-transform: uppercase;font-weight: 800;" data-aos="slide-right">Books</p>
+                
+                <p data-aos="slide-right">
+                    <a href="/store/?categories=1" style="color: white;"><i></i>Engineering Books</a>
+                    <br>
+                    <a href="/store/?categories=2" style="color: white;"><i></i>Medical Books</a>
+                    <br>
+                    <a href="/store/?categories=3" style="color: white;"><i></i>Economics</a>
+                    <br>
+                    <a href="/store/?categories=4" style="color: white;"><i></i>JEE MPC</a>
+                    <br>
+                    <a href="/store/?categories=5" style="color: white;"><i></i>JEE BiPC</a>
+                </p>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12 footer pt-5 ">
+
+                <p style="font-size:20px;text-transform: uppercase;font-weight: 800;" data-aos="slide-right">Help</p>
+                
+                <p data-aos="slide-right">
+                    <a href="/privacy/" target="_blank" style="color: white;"><i></i>Privacy Policy</a>
+                    <br>
+                    <a href="/license/" target="_blank" style="color: white;"><i></i>License</a>
+                    <br>
+                    <a href="/comingsoon/" target="_blank" style="color: white;"><i></i>Book Condition Guidelines</a>
+                    <br>
+                    <a href="/comingsoon/" target="_blank" style="color: white;"><i></i>Return Policy</a>
+                    <br>
+                    <a href="{% url 'faq' %}" style="color: white; "><i></i>FAQ</a>
+                </p>
+                <!--<span style="font-size:20px;text-transform: uppercase;font-weight: 800; " class="text-center " data-aos="zoom-in-left ">HELP</span><br>
+                <p style="margin-top:3%;margin-left:1%; " data-aos="fade-up ">Privacy Policy</p>
+                <p style="margin-top:-3%;margin-left:1%; " data-aos="fade-up ">Terms and Conditions</p>
+                <p style="margin-top:-3%;margin-left:1%; " data-aos="fade-up ">Book Condition Guidelines</p>
+                <p style="margin-top:-3%;margin-left:1%; " data-aos="fade-up "><a href="{% url 'faq' %}" style="color: white; "><i></i>FAQ</a>
+                </p>-->
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-12 col-12 footer pt-5 pb-3 ">
+            
+                <p style="font-size:20px;text-transform: uppercase;font-weight: 800; " data-aos="slide-right">contact
+                </p>
+                <p data-aos="slide-right"><i class="fa fa-home " aria-hidden="true " style="font-size:20px; "></i>&nbsp;India
+                </p>
+                <p data-aos="slide-right"><i class="fa fa-envelope " aria-hidden="true "></i>&nbsp; <a href="mailto:bookspace30@gmail.com ">bookspace30</a></p>
+                <p data-aos="slide-right"><i class="fa fa-phone " aria-hidden="true "></i>&nbsp; + 01 234 567 88</p>
+                <p data-aos="slide-right"><i class="fa fa-print " aria-hidden="true "></i>&nbsp; + 01 234 567 89</p>
+            </div>
+        </div>
+    </div>
+    <hr style="color:white;width:100%;border:1px solid ">
+    <div class="container mt-4 pb-4 ">
+        <div class="row">
+            <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+                <p>© 2024 Copyright:<span style="font-weight:600 "> Book Space</span></p>
+            </div>
+            <div class="col-12 col-xl-6 col-lg-6 col-md-6 col-sm-6 icon-head ">
+                <span class="icons-2 "><a class="fa fa-facebook " aria-hidden="true "
+                        href="https://www.facebook.com/Book-Space-108366354745575 " target="blank "
+                        style="color: white; text-decoration: none"></a></span>
+                <span class="icons-3 "><a class="fa fa-twitter " aria-hidden="true "
+                        href="https://twitter.com/BookSpa40608444" target="blank " style="color: white; text-decoration: none "></a></span>
+                <span class="icons-1 "><a class="fa fa-linkedin " aria-hidden="true "
+                        href="https://www.linkedin.com/company/book-space/" target="blank"
+                        style="color: white; text-decoration: none "></a></span>
+                <span class="icons "><a class="fa fa-instagram " aria-hidden="true "
+                    href="https://www.instagram.com/bookspace12/" target="blank"
+                        style="color: white; text-decoration: none"></a></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer-->
+<script src="https://unpkg.com/aos@next/dist/aos.js "></script>
+
+<script>
+        //on scroll plugin//
+        AOS.init({
+            once: true,
+            duration: 1000,
+        });
+        //on scroll plugin//
+
+</script>
+
+<script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav ");
+            if (x.className === "topnav ") {
+                x.className += " responsive ";
+            } else {
+                x.className = "topnav ";
+            }
+        }
+
+</script>
+
+</body>
+
+</html>

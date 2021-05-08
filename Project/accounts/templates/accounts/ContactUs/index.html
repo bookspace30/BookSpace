@@ -1,0 +1,115 @@
+{% load static %}
+
+<!--<!DOCTYPE html>-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel = "icon" href = "{% static '/images/logo5.png' %}" type = "image/png">
+
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/ContactUs/style.css' %}">
+<!--    <link rel="stylesheet" href="style.css" />-->
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <span class="big-circle"></span>
+        <img src="img/shape.png" class="square" alt="" />
+        <div class="form">
+            <div class="contact-info">
+                <h3 class="title">Let's get in touch</h3>
+                <p class="text">
+                    If you have any questions, please feel free to ask us. We will get back to you as soon as possible!
+                </p>
+
+                <div class="info">
+                    <div class="information">
+                        <img src="{% static '/images/ContactUs/location.png' %}" class="icon" alt="" />
+                        <p><a href = "https://www.google.com/maps/place/Sri+City,+Andhra+Pradesh/@13.5232311,79.9981753,13z/data=!4m5!3m4!1s0x3a4d775408997c13:0x331b190facdc26d2!8m2!3d13.5268664!4d79.9801749" style="text-decoration: none; color:rgb(78, 77, 77);">Book Space Headquarters, Sri City</a></p>
+                    </div>
+                    <div class="information">
+                        <img src="{% static '/images/ContactUs/email.png' %}" class="icon" alt="" />
+                        <a href="mailto: bookspace30@gmail.com" style="text-decoration: none; color:rgb(78, 77, 77);">bookspace30@gmail.com</a>
+                    </div>
+                    <div class="information">
+                        <img src="{% static '/images/ContactUs/phone.png' %}" class="icon" alt="" />
+                        <p><a href="tel:+919502168393" style="text-decoration: none; color:rgb(78, 77, 77);">9502168393</a></p>
+                    </div>
+                </div>
+
+                <div class="social-media">
+                    <p>Connect with us :</p>
+                    <div class="social-icons">
+                        <!-- <a href="https://www.facebook.com/Book-Space-108366354745575" target="blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a> -->
+                        <span class="icons-2 "><a class="fa fa-facebook" aria-hidden="true "
+                            href="https://www.facebook.com/Book-Space-108366354745575 " target="blank "
+                            style="color: white;  text-decoration: none "></a></span>
+                        <!-- <a href="https://twitter.com/BookSpa40608444" target="blank">
+                            <i class="fab fa-twitter"></i>
+                        </a> -->
+                        <span class="icons-3 "><a class="fa fa-twitter " aria-hidden="true "
+                            href="https://twitter.com/BookSpa40608444" target="blank " style="color: white; text-decoration: none "></a></span>
+                        <!-- <a href="https://www.instagram.com/bookspace12/" target="blank" >
+                            <i class="fab fa-instagram"></i>
+                        </a> -->
+                        <span class="icons "><a class="fa fa-instagram " aria-hidden="true "
+                            href="https://www.instagram.com/bookspace12/" target="blank"
+                                style="color: white;  text-decoration: none "></a></span>
+                        <!-- <a href="https://www.linkedin.com/company/book-space/" target="blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a> -->
+                        <span class="icons-1 "><a class="fa fa-linkedin " aria-hidden="true "
+                            href="https://www.linkedin.com/company/book-space/" target="blank"
+                            style="color: white;  text-decoration: none"></a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <span class="circle one"></span>
+                <span class="circle two"></span>
+
+                <form class="" method="post">
+                    {% csrf_token %}
+                    <h3 class="title">Contact Us</h3>
+                    <div class="input-container">
+                        <input type="text" name="name" class="input" required/>
+                        <label for="">Username</label>
+                        <!-- <input type="text" name="name" class="input" />
+                        <label for="">Username</label> -->
+                        <span>Username</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="email" name="email" class="input"  required/>
+                        <label for="">Email</label>
+                        <!-- <label for="email">Email</label>
+                        <input type="email" name="email" class="input" /> -->
+                        <span>Email</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" name="phone" class="input"/>
+                        <label for="">Phone</label>
+                        <span>Phone</span>
+                    </div>
+                    <div class="input-container textarea">
+                        <textarea name="message" class="input"  required></textarea>
+                        <label for="">Message</label>
+                        <span>Message</span>
+                    </div>
+                    <input type="submit" value="Send" class="btn" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static '/js/ContactUs/app.js' %}"></script>
+</body>
+
+</html>

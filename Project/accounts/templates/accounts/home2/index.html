@@ -1,0 +1,539 @@
+<!DOCTYPE html> {% load static %}
+
+<html class=" loading-overlay-showing" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Space</title>
+    <link rel = "icon" href = "{% static '/images/logo5.png' %}" type = "image/png">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    <link href='https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3-beta.16/dist/semantic.min.css' rel='stylesheet'>
+    <link href="{% static '/css/home2/style.css' %}" rel="stylesheet">
+    <link href="{% static '/css/AboutUs/navb.css' %}" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="loading-overlay">
+        <div class="bounce-loader">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!--Navbar 1-->
+    <nav class="ui tiny fixed borderless hidden menu">
+
+
+        <div class="topnav" id="myTopnav">
+
+            <div style="float: left;">
+                <a href="/home/"><img width='220' height='25' src={% static '/images/logo3.png' %}></a> 
+            </div>
+
+            <a href="{% url 'store' %}"><i class="fa fa-fw fa-shopping-bag"></i> Shop</a>
+            <a href="{% url 'donate' %}"><i class="fa fa-fw fa-gift"></i> Donate</a>
+            <a href="{% url 'halloffame' %}"><i class="fa fa-fw fa-user"></i> Hall Of Fame</a>
+            <a href="{% url 'aboutus' %}"><i class="fa fa-fw fa-info"></i> About</a>
+
+
+            <div class="login-container">
+                {% if request.user.is_active %}
+                <a href="{% url 'accountdetails' %}">Hello, {{request.user.customer}}</a> 
+                <a class="hello-msg" href="{% url 'logout' %}">Logout</a> {% else %}
+                <a href="{% url 'accountdetails' %}">Hello, {{request.user}}</a> 
+                <a class="hello-msg" href="{% url 'login' %}">Login</a> {% endif %}
+
+            </div>
+
+            <a class="icon" href="javascript:void(0);" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+
+        </div>
+
+
+
+    </nav>
+    <div class="ui guide popup">
+        <div class="dividing header">Search</div>
+        <div class="ui category search item">
+            <div class="ui transparent icon input">
+                <input class="prompt" placeholder="Search Guides..." type="text">
+                <i class="search link icon"></i>
+            </div>
+            <div class="results"></div>
+        </div>
+        <div class="dividing header">Categories</div>
+        <a class="item first" href="formatting/">Formatting</a><a class="item" href="elements/">Elements</a><a class="item last" href="collections/">Collections</a>
+    </div>
+    <div class="ui flowing custom tiny popup">
+        <div class="ui four column divided equal width grid">
+            <div class="column">
+                <h4 class="ui header">Elements</h4>
+                <div class="ui link list">
+                    <a class="item">Button</a>
+                    <a class="item">Container</a>
+                    <a class="item">Divider</a>
+                    <a class="item">Flag</a>
+                    <a class="item">Header</a>
+                    <a class="item">Icon</a>
+                    <a class="item">Image</a>
+                    <a class="item">Input</a>
+                    <a class="item">Label</a>
+                    <a class="item">List</a>
+                    <a class="item">Loader</a>
+                    <a class="item">Placeholder</a>
+                    <a class="item">Rail</a>
+                    <a class="item">Reveal</a>
+                    <a class="item">Segment</a>
+                    <a class="item">Step</a>
+                    <a class="item">Text</a>
+                </div>
+            </div>
+            <div class="column">
+                <h4 class="ui header">Collections</h4>
+                <div class="ui link list">
+                    <a class="item">Breadcrumb</a>
+                    <a class="item">Form</a>
+                    <a class="item">Grid</a>
+                    <a class="item">Menu</a>
+                    <a class="item">Message</a>
+                    <a class="item">Table</a>
+                </div>
+            </div>
+            <div class="column">
+                <h4 class="ui header">Views</h4>
+                <div class="ui link list">
+                    <a class="item">Advertisments</a>
+                    <a class="item">Card</a>
+                    <a class="item">Comment</a>
+                    <a class="item">Feed</a>
+                    <a class="item">Item</a>
+                    <a class="item">Statistic</a>
+                </div>
+            </div>
+            <div class="column">
+                <h4 class="ui header">Modules</h4>
+                <div class="ui link list">
+                    <a class="item">Accordion</a>
+                    <a class="item">Calender</a>
+                    <a class="item">Checkbox</a>
+                    <a class="item">Dimmer</a>
+                    <a class="item">Dropdown</a>
+                    <a class="item">Embed</a>
+                    <a class="item">Modal</a>
+                    <a class="item">Popup</a>
+                    <a class="item">Progress</a>
+                    <a class="item">Rating</a>
+                    <a class="item">Search</a>
+                    <a class="item">Shape</a>
+                    <a class="item">Sidebar</a>
+                    <a class="item">Slider</a>
+                    <a class="item">Sticky</a>
+                    <a class="item">Tab</a>
+                    <a class="item">Toast</a>
+                    <a class="item">Transition</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="ui left inverted vertical main sidebar menu">
+        <div class="item">
+            <div class="stitle">
+                Book Space
+            </div>
+        </div>
+  
+        <div class="item submenu">
+
+            <div class="menu">
+                <a class="item first active" href="/">Home</a>
+
+            </div>
+        </div>
+        <div class="item submenu">
+
+            <div class="menu">
+                <a class="item first active" href="/store/">Shop</a>
+
+            </div>
+        </div>
+        <div class="item submenu">
+
+            <div class="menu">
+                <a class="item first active" href="/donate/">Donate</a>
+
+            </div>
+        </div>
+        <div class="item submenu">
+
+            <div class="menu">
+                <a class="item first active" href="/halloffame/">Hall Of Fame</a>
+
+            </div>
+        </div>
+        <div class="item submenu">
+
+            <div class="menu">
+                <a class="item first active" href="/aboutus/">About Us</a>
+
+            </div>
+        </div>
+        <div class="item submenu">
+
+            <div class="menu">
+                <a class="item first active" href="/contactus/">Contact Us</a>
+
+
+            </div>
+        </div>
+        <div class="item submenu">
+
+            <div class="menu">
+                <a class="item first active"  href="/faq/">FAQ</a>
+            </div>
+        </div>
+
+    </nav>
+    <div class="pusher">
+        <header class="ui inverted vertical center aligned raised segment masthead in" id="masthead">
+            <div class="in">
+                <div class="out">
+                    <canvas id="canvas"></canvas>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div class="firefly"></div>
+                    <div id='stars'></div>
+                    <div id='stars2'></div>
+                    <div id='stars3'></div>
+                    <div class="stars">
+                        <div class="small"></div>
+                        <div class="medium"></div>
+                        <div class="big"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui container">
+                <nav class="ui inverted secondary pointing menu">
+                    <div class="ui icon item">
+                        <i class="ui bars icon"></i>
+                    </div>
+                   
+                </nav>
+            </div>
+            <div class="ui text container">
+                <div class="ui inverted header">
+                    <div class="reveal">Book Space</div>
+                </div>
+                <h2 class="ui inverted header">
+                    Book Space is your best source to buy books online
+                    <!--The most themantic<sup class="tool-tip" data-html="">?</sup> MODx Extra template!-->
+                </h2>
+                <a class="ui huge inverted primary basic button" href="#get-started">
+                Get Started <i class="right arrow icon"></i>
+            </a>
+            </div>
+        </header>
+        <main>
+            <section class="ui padded vertical segment">
+                <div class="ui middle aligned stackable grid container">
+                    <div class="row">
+                        <div class="eight wide column">
+                            <h1 name="get-started">Donate your Books</h1>
+                            <p>"Happiness doesn't result from what we get, but from what we give"</p>
+                            <br>
+                            <p>Helping one person might not change the whole world, but it could change the world for one person</p>
+                            <br>
+                            <p>Donate your old books to the people who are in need</p>
+                        </div>
+                        <div class="six wide right floated column">
+                            <a href="/donate/"><input alt="Submit" class="ui large rounded bordered image" src="https://t3.ftcdn.net/jpg/03/12/00/46/360_F_312004665_Qe3RWhS34rv1Px0szLOwIcCMEiSdLnSb.jpg" type="image"></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ui secondary vertical segment">
+                <div class="ui very relaxed stackable divided equal width grid container">
+                    <div class="row">
+                        <div class="middle aligned column">
+                            <div class="ui medium center aligned header icon"><i class="paint brush icon"></i>
+                                <div class="content">
+                                    <h4>What We Will Do?</h4>
+                                </div>
+                            </div>
+                            <!-- <p>If you are trying to create a <strong>landing page</strong>, <strong>blog</strong>, <strong>corporate website</strong>, or even an <strong>eCommerce shop</strong>, Book Space is a perfect means to get you started. With this template you are able to achieve a plethora of different looks, indistinguishable from one another.</p> -->
+                            <p>Our mission is to help people who have interest to study</p>
+                            
+                            <p>Book Space accepts books with pride</p>
+                            <p>Assured books are enlisted on the website</p>
+                            <p>Storing and Maintaining the Book Quality</p>
+                            <p>Shipping books to Reader Door Step</p>
+                            <p>Sharing is Caring!</p>
+                         
+                            </a>
+                        </div>
+                        <div class="middle aligned column">
+                            <div class="ui medium center aligned header icon"><i class="code icon"></i>
+                                <div class="content">
+                                    <h4>What You Should Do?</h4>
+                                </div>
+                            </div>
+                           
+                            <p>Just Order books and sit back and relax</p>
+                            <p>Our executives will get you the books as soon as possible</p>
+                            <p>Help others by donating your old books</p>
+                            <p>Fill Up the Donation Form get Books Ready</p>
+                            <p>Handover Books to Book Space at your Door-step</p>
+                            <p>Enjoy the Art Of Sharing!</p>
+
+
+                    
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ui very padded vertical segment">
+                <div class="ui container stackable equal width grid">
+                    <div class="row">
+                        <div class="middle aligned nine wide column">
+                            <h2 class="ui header">Shop all kinds of books</h2>
+                     
+                            <br> CAT, NCERT. FINANCE, ACADEMIC, DICTIONARY, NON FICTION, SCHOOL LEVEL, FICTION BOOKS, NATIONAL EXAMS, CHILDREN BOOKS ARE AVAILABLE HERE
+                        </div>
+                        <div class="middle aligned seven wide column">
+                            <div class="ui secondary top attached mini tabular menu">
+                                <a href="/store/"><input type="image" alt="Submit" class="ui large rounded bordered image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtjTnZSzWAR_2xF9LmhANGZUlUlghMQ8aHOw&usqp=CAU"></div></a>
+                            
+                                <div class="right icon menu">
+                                    <a class="item" id="codeCopy" onclick="codeToClipboard()">
+                                        
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+      
+            <section class="ui very padded secondary vertical segment">
+                <div class="ui very relaxed stackable two column grid container">
+                    <div class="column">
+                 
+                        <h2 class="ui header">Hall Of Fame</h2>
+                        <br>
+                        <p>Our website provides the top 15 donors are posted in the Hall of Fame with their names, photos and contact information.</p><p>It deals with the people who donates the most number of books to BOOK SPACE website.</p><p>For them will be providng coupons and gifts.</p><p>Website will present hall of fame people special book of the year</p>
+                    </div>
+                    <div class="column">
+                        <!--Insert Photo-->
+                        <div class="six wide right floated column">
+                            <a href="/halloffame/"><input type="image" alt="Submit" class="ui large rounded bordered image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW5u9_Zi9_CrNPZz86Hpqb5glgYdL_mSSqOA&usqp=CAU"></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ui vertical segment">
+                <div class="ui very relaxed stackable grid container" id="summary">
+                    <div class="three column row" id="summary">
+                        <div class="column">
+                            <h2>About Us</h2>
+                            <p>Worry not! Because Book Space is here to answer all your literary prayers. Knowledge is priceless but the books come with a bill and the Book Space is committed to bring to you the best of the brilliant from the world of written text, at prices which are literally a steal.</p>
+                            <a class="ui small icon button" href="/aboutus/" target="">About Us<i class="angle double right icon"></i></a>
+                        </div>
+                        <div class="column">
+                            <h2>Contact Us</h2>
+                            <p>Just send us your questions or concerns by starting a new case and we will give you the help you need. Chat with a member of our in-house team. Please use this contact form to get in touch with the Book Space team. Can Contact the webiste 24/7. </p>
+                            <a class="ui small icon button" href="/contactus/" target="">Contact Us <i
+                                class="angle double right icon"></i></a>
+                        </div>
+                        <div class="column">
+                            <h2>FAQ</h2>
+                            <p>Browse through these FAQs to find answers to commonly raised questions. If you are new user to website, we highly encourage if you read through the relevant articles which will help you to resolve your doubts. We appreciate you for joining our community. </p>
+                            <a class="ui small icon button" href="/faq/" target="">FAQ <i
+                                    class="angle double right icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="ui vertical segment" id="subscribe">
+                <div class="ui very relaxed center aligned grid container">
+                    <div class="column">
+                        <h2 class="ui header">
+                            Are you wanting to continue your quest for Book Space enlightenment?
+                        </h2>
+                        <div class="ui huge sub header">Sign up now and never miss out.</div>
+                        <form action="" class="ui form" method="post">
+                            <div class="field">
+                                <div class="ui big input">
+                                    <input data-validate="email" name="email" placeholder="E-mail" type="text">
+                                </div>
+                                
+                                <a class="ui big secondary submit button" href="/comingsoon/">Sign-up</a>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        <footer class="site-footer" id="colophon">
+            <div class="container">
+                <div class="inner">
+                    <div class="stackable doubling ui grid">
+                        <div class="six wide column">
+                            <aside class="widget">
+                                <div class="widget_content">
+                                    <h4 class="ui inverted header">Rate Our Website</h4>
+                                    <div 0 class="ui massive violet rating" data-icon="award" data-max-rating="5"></div>
+                                    <h4 class="ui inverted header">Brought To You By</h4>
+                                    <p>Neeraj Dusa</p>
+                                    <p>Harish Mullagura</p>
+                                    <p>Jayanth Sriram</p>
+                                    <p>Rakesh Ganeshula</p>
+                                    <p>Anirudh Jakhotia</p>
+
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="three wide column">
+                            <aside class="widget widget_nav_menu">
+                                <h4 class="ui inverted header">Pages</h4>
+                                <div class="ui tiny inverted link list">
+                                    <a class="item first active" href="/">Book Space</a>
+                                    <a class="item" href="/store/">Shop</a>
+                                    <a class="item" href="/donate/">Donate</a>
+                                    <a class="item" href="/halloffame/">Hall of Fame</a>
+                                    <a class="item" href="/aboutus/">About Us</a>
+                                    <a class="item" href="/contactus/">Contact Us</a>
+                                    <a class="item last" href="/faq/">FAQ</a>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="three wide column">
+                            <aside class="widget widget_nav_menu">
+                                <h4 class="ui inverted header">Connect With Us</h4>
+                                <div class="ui tiny inverted link list">
+                                    <a class="item first" href="https://www.linkedin.com/company/book-space/" target="blank">LinkedIn</a>
+                                    <a class="item" href="https://www.facebook.com/Book-Space-108366354745575" target="blank">FaceBook</a>
+                                    <a class="item" href="https://www.instagram.com/bookspace12/" target="blank" >Instagram</a>
+                                    <a class="item" href="https://twitter.com/BookSpa40608444" target="blank">Twitter</a>
+                                    <a class="item" href="https://github.com/bookspace30" target="blank">GitHub</a>
+                                    <a class="item last" href="https://codepen.io/bookspace30" target="blank">Codepen</a>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="four wide column">
+                            <aside class="widget">
+                                <h4 class="ui inverted header">Subscribe</h4>
+                                <div class="newsletter-box-wrapper">
+                                    <form id="newsletter-box">
+                                        <div class="ui action left icon input">
+                                            <input placeholder="Enter your email ..." type="text">
+                                            <i class="mail outline icon"></i>
+                                            <div class="ui button">Submit</div>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div class="newsletter-text">You can opt out of our newsletters at any time. See our
+                                            <a target="_blank" href="/privacy/">privacy policy</a>.
+                                        </div>
+                                    </form>
+                                </div>
+                            </aside>
+                            <aside class="widget">
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <section class="ui inverted vertical segment">
+            <div class="ui container">
+                <div class="footer_copy">
+                        Copyright © All Rights Reserved. <a href="/">Book Space</a>
+                            
+                </div>
+            </div>
+        </section>
+        <footer class="ui inverted clearing vertical segment footer">
+            <div class="ui container">
+                <div class="item">
+                    <div class="content">
+                        <div class="ui right floated inverted horizontal small link list">
+                            <a class="item" href="mailto:bookspace30@gmail.com"><i class="google icon"></i></a>
+                            <a class="item" href="https://twitter.com/BookSpa40608444" target="blank"><i class="twitter icon"></i></a>
+                            <a class="item" href="https://www.facebook.com/Book-Space-108366354745575" target="blank"><i class="facebook f icon"></i></a>
+                            <a class="item" href="https://www.instagram.com/bookspace12/" target="blank"><i class="instagram icon"></i></a>
+                            <a class="item" href="https://codepen.io/bookspace30" target="blank"><i class="codepen icon"></i></a>
+                            <a class="item" href="https://github.com/bookspace30" target="blank"><i class="github icon"></i></a>
+                            <a class="item" href="https://www.linkedin.com/company/book-space/" target="blank"><i class="linkedin icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="middle aligned content">
+                        <div class="ui left floated inverted horizontal mini link list">
+                            <a class="item" href="/">Home</a>
+                            <a class="item" href="/store/">Shop</a>
+                            <a class="item" href="/donate/">Donate</a>
+                            <a class="item" target="_blank" href="/license/">Licenses</a>
+                            <a class="item" target="_blank" href="/privacy/">Privacy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <i class="big circular arrow alternate circle up outline link icon top"></i>
+    </div>
+    <div class="ui small modal">
+        <i class="close icon"></i>
+        <div class="header">Example Modal</div>
+        <div class="image content">
+            <div class="ui medium image">
+                <img alt="" class="ui medium image" src="https://pac-man.demondevin.modxcloud.com/assets/themes/fomantic-ui/images/wireframe/image-square.png">
+            </div>
+            <div class="description">
+                <p>Here's an example of a tiny-sized modal with a header and image content! You can use a transition effect&mdash;in this case a 'fade' effect. Also, when activated, it blurs the content in the background.</p>
+                <p>This modal also disables the dimmer from being closed by forcing the user to click the 'Okay' button or the 'X' icon at the top-right!</p>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui green ok inverted button">
+                <i class="checkmark icon"></i> Okay
+            </div>
+        </div>
+    </div>
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3-beta.16/dist/semantic.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js'></script>
+    <script src="./script.js"></script>
+    <script src="{% static '/js/home2/script.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+
+/*footer*/
+
+.icons-1,
+.icons,
+.icons-2,
+.icons-3 {
+    border: 1px solid transparent;
+    padding: 2% 2.2%;
+    margin-left: 2%;
+    border-radius: 50px;
+    background-color: rgb(49, 48, 48);
+}
+
+.icons-2 {
+    padding: 2% 3%;
+}
+
+.icons-3 {
+    padding: 2% 2.5%;
+}
+
+.icons {
+    padding: 2% 2.8%;
+}
+
+.icon-head {
+    text-align: end;
+}
+
+@media screen and (max-width:768px) {
+    .footer {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:575px) {
+    .icon-head {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width:1199px) {
+    .hide-girl {
+        display: none
+    }
+}
+
+
+/*footer*/
+
+@media screen and (max-width:426px) {
+    .header-part {
+        height: 200px
+    }
+}
